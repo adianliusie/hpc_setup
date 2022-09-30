@@ -2,12 +2,12 @@
 
 
 ### My HPC files
-My SLURM submit script : 
-my .bashrc :
-python environment :
-requirements.txt :
+My SLURM submit script : [submit.sh](submit.sh) \
+my .bashrc : [.bashrc](bashrc)\
+python environment : [python_env.txt](python_env.txt)\
+requirements.txt : [requirements.txt](requirements.txt) 
 
-\*note that requirement.txt is not the same as the python environment, since within requirements installing a module can install multiple other modules, and secondly some libraries require external links to be downloaded
+\*note that requirement.txt is not the same as the python environment, since installing a module can install multiple other modules, and secondly some libraries require external links to be downloaded
 
 ---
 ### Getting a basic working torch environment
@@ -37,12 +37,14 @@ This version of pytorch should work for both jobs on ampere and pascal machines 
 ---
 ### Cuda
  
-As far as I understand, certain GPU machines are only compatible with certain versions of cuda:
+As far as I understand, certain GPU machines are only compatible with certain versions of cuda. And the pytorch version installed is only compatible with a certain version of cuda.
 
 one can load different cuda versions using ```module load```: For example to specifically load cuda 11.2:
 ```
 module load cuda/11.2
 ```
 
-\
-additionally, if conda is used as the package manager, conda itself may download local cuda versions which environments can access.
+This line is included in the submit script, though only cuda/10.0 is loaded. With the above environment I've run python files directly on the A100 machines without loading any cuda, so it's questionable whether loading the specific cuda version is important, though it could just be that cuda 11.1 is available by default on all the different gpu machines. 
+
+
+
