@@ -58,7 +58,7 @@ torch1.12+cu11.6 (cuda 11.6 seems to be unavailable on the current machines) \
 torch1.12+cu10.2 (cuda 10.2 is too old to work on ampere)
 
 ---
-## Cuda
+### Cuda
  
 Certain GPU machines are only compatible with certain versions of cuda while pytorch is installed as only compatible with a certain version of cuda (as far as I understand).
 
