@@ -60,7 +60,7 @@ torch1.12+cu10.2 (cuda 10.2 is too old to work on ampere)
 ---
 ### Cuda
  
-Certain GPU machines are only compatible with certain versions of cuda while pytorch is installed as only compatible with a certain version of cuda (as far as I understand).
+Certain GPU machines are only compatible with certain versions of cuda, while pytorch is installed only compatible with a certain version of cuda (as far as I understand).
 
 Cuda versions available on hpc: [9.1, 9.2, 10.0, 10.1, 10.2, 11.0, 11.1, 11.2, 11.4] \
 One can load different cuda versions using ```module load```. For example to load cuda 11.2, use
