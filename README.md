@@ -35,16 +35,41 @@ pip install torch==1.9.1+cu111 torchvision==0.10.1+cu111 torchaudio==0.9.1 -f ht
 This version of pytorch should work for both jobs on ampere and pascal machines on the HPC 
 
 ---
+### tested torch+cuda that work on both ampere and pascal
+**torch 1.9 + cuda 11.1**
+```
+pip install torch==1.9.1+cu111 torchvision==0.10.1+cu111 torchaudio==0.9.1 -f https://download.pytorch.org/whl/torch_stable.html
+```
+
+**torch 1.10 + cuda 11.1**
+```
+pip install torch==1.10.0+cu111 torchvision==0.11.0+cu111 torchaudio==0.10.0 -f https://download.pytorch.org/whl/torch_stable.html
+```
+*all of the above environments don't seem to require cuda to be loaded. I have commented out the module load line in the submit script, and it still works on gpu
+
+**torch 1.12 + cuda 11.3**
+```
+pip install torch torchvision torchaudio --extra-index-url https://download.pytorch.org/whl/cu113
+```
+
+
+#### Failed torch+cuda versions
+torch1.12+cu11.6 (cuda 11.6 seems to be unavailable on the current machines)
+torch1.12+cu10.2 (cuda 10.2 is too old to work on ampere)
+
+---
 ### Cuda
  
-As far as I understand, certain GPU machines are only compatible with certain versions of cuda. And the pytorch version installed is only compatible with a certain version of cuda.
+Certain GPU machines are only compatible with certain versions of cuda while pytorch is installed as only compatible with a certain version of cuda (as far as I understand). \
 
-one can load different cuda versions using ```module load```: For example to specifically load cuda 11.2:
+Cuda versions available on hpc: [9.1, 9.2, 10.0, 10.1, 10.2, 11.0, 11.1, 11.2, 11.4]
+One can load different cuda versions using ```module load```. For example to load cuda 11.2 run the command on terminal
 ```
 module load cuda/11.2
 ```
 
-This line is included in the submit script, though only cuda/10.0 is loaded. With the above environment I've run python files directly on the A100 machines without loading any cuda, so it's questionable whether loading the specific cuda version is important, though it could just be that cuda 11.1 is available by default on all the different gpu machines. 
+loading cuda is present in the submit script for cuda/10.0, though from experience this seems to be unnecessary.
+
 
 
 
